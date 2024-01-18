@@ -95,7 +95,7 @@ for (i in 1:length(all_data)) {
 # mean video lengths in frames
 mean(mean_vec)
 
-# mean lengths in minutes
+# mean lengths in minutes (25 = frames per minute, edit for other framerates)
 mean(mean_vec)/25/60
 sd(mean_vec)/25/60
 
