@@ -10,4 +10,4 @@ The script is written in R which may be more accessible to psychologists. It ass
 
 This script was developed in close collaboration with the following researchers:
 
-Uwe Altmann (MSB), Philipp Müller (DFKI), Mina Ameli (DFKI), Janet Wessler (DFKI)
+Uwe Altmann (MSB), Philipp Müller (DFKI), Mina Ameli (DFKI), Fabrizio Nunnari (DFKI), Janet Wessler (DFKI)
