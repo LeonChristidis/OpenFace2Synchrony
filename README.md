@@ -2,9 +2,9 @@
 
 ## Description
 
-This R script provides a bridge between OpenFace 2.0 outputs and subsequent nonverbal synchrony calculations either using [Altmann's (2013)](https://github.com/10101-00001) approach or rMEA [Kleinbub & Ramseyer (2021)](https://doi.org/10.1080/10503307.2020.1844334). 
+This R script provides a bridge between [OpenFace 2.0](https://github.com/TadasBaltrusaitis/OpenFace) (Amos et al., 2016) outputs and subsequent nonverbal synchrony calculations either using [Altmann's (2013)](https://github.com/10101-00001) approach or [rMEA](https://github.com/kleinbub/rMEA) (Kleinbub & Ramseyer, 2021). 
 
-The main function is based on OpenDBM's [head_pose_dist function](https://github.com/AiCure/open_dbm/blob/master/opendbm/dbm_lib/dbm_features/raw_features/movement/head_motion.py). However, the function was altered and the scope for calculation narrowed. OpenDBM’s head_post_dist function filters out frames that detect a face with a confidence of .2 or higher, the present function uses a threshold of .95 instead. Additionally, the Euclidean distance was only calculated when the frame before the current one (index-1) showed a confidence of at least .95 as well. This was done in order to avoid onset peaks of movement that resulted from erroneous calculations of the Euclidean distance based on preceding frames with low confidence ratings and therefore unreliable calculations of the head position. 
+The main function is based on OpenDBM's [head_pose_dist function](https://github.com/AiCure/open_dbm/blob/master/opendbm/dbm_lib/dbm_features/raw_features/movement/head_motion.py) (AiCure, 2023). However, the function was altered and the scope for calculation narrowed. OpenDBM’s head_post_dist function filters out frames that detect a face with a confidence of .2 or higher, the present function uses a threshold of .95 instead. Additionally, the Euclidean distance was only calculated when the frame before the current one (index-1) showed a confidence of at least .95 as well. This was done in order to avoid onset peaks of movement that resulted from erroneous calculations of the Euclidean distance based on preceding frames with low confidence ratings and therefore unreliable calculations of the head position. 
 
 Unfortunately, neural networks like OpenFace 2.0 may detect faces, and therefore movement, were there are no actual faces present, or where they are partially obscured by a hand. Hence, even frames with high confidence ratings may produce erroneous movement calculations. The highest values tend to appear at camera onset after a blue screen or when a hand is masking the face. Given that, in the case of head movements, outliers are not only valid but also suggestive of behaviors (e.g., head nodding during agreement or shaking for disagreement), it is difficult to determine a threshold that only removes false positives.  
 
@@ -30,6 +30,8 @@ Uwe Altmann (MSB), Mina Ameli (DFKI), Philipp Müller (DFKI), Fabrizio Nunnari (
 AiCure. (2023). OpenDBM. GitHub. https://github.com/AiCure/open_dbm
 
 Altmann, U. (2013). MEA: Motion Energy Analysis. GitHub. https://github.com/10101-00001/MEA
+
+Amos, B., Ludwiczuk, B., & Satyanarayanan, M. (2016). Openface: A general-purpose face recognition library with mobile applications. CMU School of Computer Science, 6(2), 20.
 
 Aw, S. T., Haslwanter, T., Halmagyi, G. M., Curthoys, I. S., Yavor, R. A., & Todd, M. J. (1996). Three-dimensional vector analysis of the human vestibuloocular reflex in response to high-acceleration head rotations. I. Responses in normal subjects. Journal of Neurophysiology, 76(6), 4009–4020.
 
