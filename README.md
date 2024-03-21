@@ -2,7 +2,7 @@
 
 ## Description
 
-This R script provides a bridge between [OpenFace 2.0](https://github.com/TadasBaltrusaitis/OpenFace) (Amos et al., 2016) outputs and subsequent nonverbal synchrony calculations either using [Altmann's (2013)](https://github.com/10101-00001) approach or [rMEA](https://github.com/kleinbub/rMEA) (Kleinbub & Ramseyer, 2021). 
+This R script provides a bridge between [OpenFace 2.0](https://github.com/TadasBaltrusaitis/OpenFace) (Baltrušaitis et al., 2016) outputs and subsequent nonverbal synchrony calculations either using [Altmann's (2013)](https://github.com/10101-00001) approach or [rMEA](https://github.com/kleinbub/rMEA) (Kleinbub & Ramseyer, 2021). 
 
 The main function is based on OpenDBM's [head_pose_dist function](https://github.com/AiCure/open_dbm/blob/master/opendbm/dbm_lib/dbm_features/raw_features/movement/head_motion.py) (AiCure, 2023). However, the function was altered and the scope for calculation narrowed. OpenDBM’s head_post_dist function filters out frames that detect a face with a confidence of .2 or higher, the present function uses a threshold of .95 instead. Additionally, the Euclidean distance was only calculated when the frame before the current one (index-1) showed a confidence of at least .95 as well. This was done in order to avoid onset peaks of movement that resulted from erroneous calculations of the Euclidean distance based on preceding frames with low confidence ratings and therefore unreliable calculations of the head position. 
 
@@ -31,9 +31,9 @@ AiCure. (2023). OpenDBM. GitHub. https://github.com/AiCure/open_dbm
 
 Altmann, U. (2013). MEA: Motion Energy Analysis. GitHub. https://github.com/10101-00001/MEA
 
-Amos, B., Ludwiczuk, B., & Satyanarayanan, M. (2016). Openface: A general-purpose face recognition library with mobile applications. CMU School of Computer Science, 6(2), 20.
-
 Aw, S. T., Haslwanter, T., Halmagyi, G. M., Curthoys, I. S., Yavor, R. A., & Todd, M. J. (1996). Three-dimensional vector analysis of the human vestibuloocular reflex in response to high-acceleration head rotations. I. Responses in normal subjects. Journal of Neurophysiology, 76(6), 4009–4020.
+
+Baltrušaitis, T., Robinson, P., & Morency, L. P. (2016, March). Openface: an open source facial behavior analysis toolkit. In 2016 IEEE winter conference on applications of computer vision (WACV) (pp. 1-10). IEEE.
 
 Grossman, G. E., Leigh, R. J., Abel, L. A., Lanska, D. J., & Thurston, S. E. (1988). Frequency and velocity of rotational head perturbations during locomotion. Experimental Brain Research, 70(3), 470–476. https://doi.org/10.1007/BF00247595
 
