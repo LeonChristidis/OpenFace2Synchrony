@@ -6,7 +6,7 @@ This R script provides a bridge between [OpenFace 2.0](https://github.com/TadasB
 
 The main function is based on OpenDBM's [head_pose_dist function](https://github.com/AiCure/open_dbm/blob/master/opendbm/dbm_lib/dbm_features/raw_features/movement/head_motion.py) (AiCure, 2023). However, the function was altered and the scope for calculation narrowed. OpenDBM’s head_post_dist function filters out frames that detect a face with a confidence of .2 or higher, the present function uses a threshold of .95 instead. Additionally, the Euclidean distance was only calculated when the frame before the current one (index-1) showed a confidence of at least .95 as well. This was done in order to avoid onset peaks of movement that resulted from erroneous calculations of the Euclidean distance based on preceding frames with low confidence ratings and therefore unreliable calculations of the head position. 
 
-![onset peak github](https://www.dropbox.com/scl/fi/o2ltegb8u1eqnfb0o6o4u/onset-peak-github.png?rlkey=al0ex8qqi6s6jzloc1yp2360j&dl=0)
+
 
 *Note. (A) shows calculated motion energy based on the original code by OpenDBM (red) and based on the modified version (blue); note that the calculated values of both codes are identical which is why the blue marking indicates when the modified code does calculate the same value and when it does not calculate one at all. (B) shows the confidence level with which the participant’s head pose was determined by OpenFace. In this case an onset peak of movement occurred because the camera was adjusted to fit the portrait of a participant. Frame 205 marks the moment the camera was properly set up.*
 
