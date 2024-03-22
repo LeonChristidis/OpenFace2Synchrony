@@ -23,7 +23,7 @@ This is a first attempt to filter out implausible movement captured by OpenFace 
 
 ## Notes
 
-The script is written in R which may be more accessible to psychologists. It assists with the management of relativley large data sets, cuts computing times short using foreach loops and generates outputs that are usable for common synchrony calculations. However, the change in confidence threshold is easily acichievable in the original code by OpenDBM.
+The script is written in R which may be more accessible to psychologists. It assists with the management of relativley large data sets, cuts computing times short using foreach loops and generates outputs that are usable for common synchrony calculations. However, the change in confidence threshold is easily achievable in the original code by OpenDBM.
 
 ## Contributors to this project
 
