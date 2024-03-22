@@ -6,8 +6,7 @@ This R script provides a bridge between [OpenFace 2.0](https://github.com/TadasB
 
 The main function is based on OpenDBM's [head_pose_dist function](https://github.com/AiCure/open_dbm/blob/master/opendbm/dbm_lib/dbm_features/raw_features/movement/head_motion.py) (AiCure, 2023). However, the function was altered and the scope for calculation narrowed. OpenDBM’s head_post_dist function filters out frames that detect a face with a confidence of .2 or higher, the present function uses a threshold of .95 instead. Additionally, the Euclidean distance was only calculated when the frame before the current one (index-1) showed a confidence of at least .95 as well. This was done in order to avoid onset peaks of movement that resulted from erroneous calculations of the Euclidean distance based on preceding frames with low confidence ratings and therefore unreliable calculations of the head position. 
 
-
-
+![onset peak](https://github.com/LeonChristidis/OpenFace2Synchrony/assets/39700237/823979ea-b2b4-4b90-8ca5-e823100614ac)
 *Note. (A) shows calculated motion energy based on the original code by OpenDBM (red) and based on the modified version (blue); note that the calculated values of both codes are identical which is why the blue marking indicates when the modified code does calculate the same value and when it does not calculate one at all. (B) shows the confidence level with which the participant’s head pose was determined by OpenFace. In this case an onset peak of movement occurred because the camera was adjusted to fit the portrait of a participant. Frame 205 marks the moment the camera was properly set up.*
 
 Unfortunately, neural networks like OpenFace 2.0 may detect faces, and therefore movement, were there are no actual faces present, or where they are partially obscured by a hand. Hence, even frames with high confidence ratings may produce erroneous movement calculations. The highest values tend to appear at camera onset after a blue screen or when a hand is masking the face. Given that, in the case of head movements, outliers are not only valid but also suggestive of behaviors (e.g., head nodding during agreement or shaking for disagreement), it is difficult to determine a threshold that only removes false positives.  
@@ -18,6 +17,9 @@ OpenFace 2.0 estimates radians per frame. Using a camera that captures content a
 If a person violently shook their head and actually reached 457°/s, that would result in a Euclidean distance of .3. However, this is arguably unlikely in a recorded experimental conversation task. In one sample, the .2 threshold filtered out only 0.05% of frames on average but excluded frames showing movement as high as 8.5 radians per frame (12175°/sec) which reflects impossible head movement. The small number of excluded frames may indicate two things: either applying a 95% confidence filter in the movement calculation a priori may sort out outliers well enough already or our threshold is set too high. 
 
 This is a first attempt to filter out implausible movement captured by OpenFace 2.0. A more robust threshold needs to be established by comparing plausible movement across various situations. 
+
+![high peak](https://github.com/LeonChristidis/OpenFace2Synchrony/assets/39700237/42fcd1c7-1586-4430-8d23-60eda71b345a)
+*Note. Displayed is motion energy (A) and confidence rating (B) during a period in which a participant scratched their  eye. This resulted in high motion values which are only correctly filtered out with the modified code. The value 0.203 was filtered out subsequently because while it met the criteria of high confidence ratings it did not satisfy the criteria for physiologically possible head movement.*
 
 ## Notes
 
